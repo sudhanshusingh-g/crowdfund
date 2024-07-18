@@ -11,7 +11,7 @@ export default {
       },
       neutral: {
         black: "hsl(0, 0%, 0%)",
-        darkGray: "hsl(0, 0%, 48%)",
+        darkGray: "hsl(0, 0%, 60%)",
       },
     },
     fontFamily: {

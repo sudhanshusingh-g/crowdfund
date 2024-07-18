@@ -1,7 +1,8 @@
-import { Bookmark, BookMarked, BookMarkedIcon } from "lucide-react";
+import { Bookmark } from "lucide-react";
 import logoMasterCraft from "../assets/logo-mastercraft.svg"
+import ProjectsModal from "./ProjectsModal";
 
-function ProjectInfoCard() {
+function ProjectInfoCard({ projectsModal, setProjectsModal }) {
   return (
     <section className="font-commissioner bg-primary-white  rounded shadow relative bottom-6 p-4 flex flex-col items-center">
       <div className="">
@@ -18,15 +19,23 @@ function ProjectInfoCard() {
         <p className="text-sm text-center  text-neutral-darkGray">
           A beautiful & handcrafted monitor stand to reduce neck and eye strain.
         </p>
-        <div className="w-full flex items-center  gap-4 justify-between ">
-          <button className="py-4 px-8 bg-primary-moderateCyan text-primary-white hover:bg-primary-darkCyan rounded-full">
+        <div className="w-full flex items-center justify-center gap-4 md:justify-between ">
+          <button
+            onClick={() => setProjectsModal(true)}
+            className="py-4 px-8 bg-primary-moderateCyan text-primary-white hover:bg-primary-darkCyan rounded-full"
+          >
             Back this project
           </button>
-          <button className="bg-neutral-black p-2 w-fit rounded-full text-neutral-darkGray">
-            <Bookmark />
+          <button className="bg-neutral-black p-4 w-fit rounded-full text-neutral-darkGray">
+            <Bookmark className="h-6 w-6" />
           </button>
         </div>
       </div>
+      {projectsModal && (
+        <div className="absolute h-[100vh] z-30  w-[80%]">
+          <ProjectsModal setProjectsModal={setProjectsModal} />
+        </div>
+      )}
     </section>
   );
 }
