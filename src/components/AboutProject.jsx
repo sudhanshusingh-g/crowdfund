@@ -1,26 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import PledgeCard from './PledgeCard';
-import { rewards } from '../data/rewards-data';
+import React from "react";
+import PledgeCard from "./PledgeCard";
+import { rewards } from "../data/rewards-data";
 
- function AboutProject() {
-    const [projectRewards, setProjectRewards] = useState([]);
-    
-    const fetchRewards=()=>{
-      try {
-        const data = rewards;
-        setProjectRewards(data);
-      } catch (error) {
-        console.error("Error fetching rewards",error);
-      }
-    }
-
-    useEffect(() => {
-      fetchRewards();
-    }, [])
-    
-
+function AboutProject() {
   return (
-    <section className="font-commissioner bg-primary-white  rounded shadow mt-2 p-4 flex flex-col">
+    <section className="font-commissioner bg-primary-white rounded shadow mt-2 p-4 flex flex-col">
       <h3 className="font-bold">About this project</h3>
       <p className="text-neutral-darkGray mt-6 leading-7">
         The Mastercraft Bamboo Monitor Riser is a sturdy and stylish platform
@@ -34,13 +18,13 @@ import { rewards } from '../data/rewards-data';
         desk space below your computer to allow notepads, pens, and USB sticks
         to be stored under the stand.
       </p>
-      <div className='flex flex-col gap-4'>
-        {projectRewards.map((reward) => (
-          <PledgeCard key={reward.id} data={reward}/>
+      <div className="flex flex-col gap-4">
+        {rewards.slice(1).map((reward) => (
+          <PledgeCard key={reward.id} data={reward} />
         ))}
       </div>
     </section>
   );
 }
 
-export default AboutProject
+export default AboutProject;
